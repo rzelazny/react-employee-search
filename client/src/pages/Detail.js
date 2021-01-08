@@ -5,7 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 function Detail() {
-  const [book, setBook] = useState({})
+  const [employee, setEmployee] = useState({})
   
   // Add code to get the book with an _id equal to the id in the route param
   // e.g. http://localhost:3000/books/:id
@@ -14,8 +14,8 @@ function Detail() {
   const {id} = useParams();
 
   useEffect(() => {
-    API.getBook(id)
-      .then(res => setBook(res.data))
+    API.getEmployee(id)
+      .then(res => setEmployee(res.data))
       .catch(err => console.log(err));
   }, [])
 
@@ -25,7 +25,7 @@ function Detail() {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {book.title} by {book.author}
+                {employee.firstName} {employee.lastName}
               </h1>
             </Jumbotron>
           </Col>
@@ -33,9 +33,9 @@ function Detail() {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>Synopsis</h1>
+              
               <p>
-                {book.synopsis}
+                
               </p>
             </article>
           </Col>

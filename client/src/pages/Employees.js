@@ -8,24 +8,24 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Books() {
-  const [books, setBooks] = useState([])
+  const [employees, setEmployees] = useState([])
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
-    loadBooks()
+    loadEmployees()
   }, [])
 
-  function loadBooks() {
-    API.getBooks()
+  function loadEmployees() {
+    API.getEmployees()
       .then(res => 
-        setBooks(res.data)
+        setEmployees(res.data)
       )
       .catch(err => console.log(err));
   };
 
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
+  function deleteEmployee(id) {
+    API.deleteEmployees(id)
+      .then(res => loadEmployees())
       .catch(err => console.log(err));
   }
 
@@ -34,18 +34,18 @@ function Books() {
     setFormObject({...formObject, [name]: value})
   };
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.title && formObject.author) {
-      API.saveBook({
-        title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
-      })
-        .then(res => loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+   function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   if (formObject.firstName && formObject.lastName) {
+  //     API.saveBook({
+  //       // title: formObject.title,
+  //       // author: formObject.author,
+  //       // synopsis: formObject.synopsis
+  //     })
+  //       .then(res => loadEmployees())
+  //       .catch(err => console.log(err));
+  //   }
+   };
 
     return (
       <Container fluid>
@@ -71,7 +71,7 @@ function Books() {
                 placeholder="Synopsis (Optional)"
               />
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+                disabled={!(formObject.firstName && formObject.lastName)}
                 onClick={handleFormSubmit}
               >
                 Submit Book
@@ -82,16 +82,16 @@ function Books() {
             <Jumbotron>
               <h1>Books On My List</h1>
             </Jumbotron>
-            {books.length ? (
+            {employees.length ? (
               <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {employees.map(employee => (
+                  <ListItem key={employee._id}>
+                    <Link to={"/employees/" + employee._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => deleteEmployee(employee._id)} />
                   </ListItem>
                 ))}
               </List>
