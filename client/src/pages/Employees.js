@@ -14,7 +14,7 @@ function Employees() {
   }, [])
 
   function loadEmployees() {
-    API.getEmployees()
+    API.createEmployees()
       .then(res =>
         setEmployees(res.data)
       )
@@ -38,13 +38,15 @@ function Employees() {
       </Jumbotron>
       <Row>
         <Col size="md-3 sm-3">
-          <p onClick={()=>sortEmployees()} >Employee Name <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
+          <p onClick={()=>sortEmployees()} >Employee Name {sort === -1 ? 
+          (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) : 
+          (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</p>
         </Col>
         <Col size="md-3 sm-3">
-        <p >Employee Email Address <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
+        <p >Employee Email Address </p>
         </Col>
         <Col size="md-3 sm-3">
-        <p >Employee Phone Number <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
+        <p >Employee Phone Number </p>
         </Col>
         <Col size="md-3 sm-3">
         <p >Employee Birthday <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
