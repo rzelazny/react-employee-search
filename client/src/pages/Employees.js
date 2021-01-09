@@ -49,7 +49,7 @@ function Employees() {
         <p >Employee Phone Number </p>
         </Col>
         <Col size="md-3 sm-3">
-        <p >Employee Birthday <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
+        <p >Employee Birthday </p>
         </Col>
       </Row>
       {employees.length ? (

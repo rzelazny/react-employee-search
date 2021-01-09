@@ -35,7 +35,7 @@ function Detail() {
             <article>
               
               <p>
-                
+              {employee.department} 
               </p>
             </article>
           </Col>
