@@ -12,7 +12,7 @@ module.exports = {
     console.log("Filtered called", req.params.name);
     db.Employee
       .find(req.query)
-      .sort({lastName: req.params.name})
+      .where({lastName: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -13,7 +13,8 @@ function Employees() {
 
   //get employees on page load
   useEffect(() => {
-    loadEmployees()
+    if(employeeSearch === "") loadEmployees()
+    else console.log(employeeSearch)
   }, [])
 
   //function pulls the existing employees
@@ -46,12 +47,16 @@ function Employees() {
   const handleFormSubmit = event => {
     event.preventDefault();
     console.log("form submitted");
-    API.filterEmployees(employeeSearch)
+    if(employeeSearch !== ""){
+      API.filterEmployees(employeeSearch)
       .then(res => {
         console.log(res.data)
-        setSearch(res.data)
+        setEmployees(res.data)
       })
       .catch(err => console.log(err));
+    }
+    else loadEmployees();
+    
   };
 
   return (
@@ -61,9 +66,9 @@ function Employees() {
       </Jumbotron>
       <Row>
         <Col size="md-3 sm-3"> {/* show either the asc or desc arrow depending on which sort is used */}
-          <p onClick={() => sortEmployees()} >Employee Name {sort === -1 ?
+          <h5 onClick={() => sortEmployees()} >Employee Name {sort === -1 ?
             (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) :
-            (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</p>
+            (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</h5>
         </Col>
         <Col size="md-3 sm-3">
           <p >Employee Email Address </p>
