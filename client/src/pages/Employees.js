@@ -9,7 +9,7 @@ import Input from "../components/Input";
 function Employees() {
   const [employees, setEmployees] = useState([]);
   const [sort, setSort] = useState(1);
-  const [empName, setSearch] = useState("");
+  const [employeeSearch, setSearch] = useState("");
 
   //get employees on page load
   useEffect(() => {
@@ -37,6 +37,7 @@ function Employees() {
 
   //function handles typing in the search form
   const handleInputChange = event => {
+    console.log("form changed");
     const { value } = event.target;
     setSearch(value);
   };
@@ -44,7 +45,8 @@ function Employees() {
   //function handles submission of the search form
   const handleFormSubmit = event => {
     event.preventDefault();
-    API.getRecipes(empName)
+    console.log("form submitted");
+    API.filterEmployees(employeeSearch)
       .then(res => {
         console.log(res.data)
         setSearch(res.data)
@@ -75,7 +77,7 @@ function Employees() {
         <Col size="md-3 sm-3">
           <Input
             name="employeeSearch"
-            value={empName}
+            value={employeeSearch}
             onChange={handleInputChange}
             onSubmit={handleFormSubmit}
             placeholder="Employee Name" />

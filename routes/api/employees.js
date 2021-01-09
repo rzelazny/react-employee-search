@@ -5,6 +5,9 @@ const employeeController = require("../../controllers/employeeController");
 router.route("/")
   .get(employeeController.findAll)
 
+router.route("/filter/:name")
+  .get(employeeController.filtered)
+
 router.route("/sort/:order")
   .get(employeeController.sorted)
   
