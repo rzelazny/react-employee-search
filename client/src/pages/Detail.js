@@ -31,13 +31,33 @@ function Detail() {
           </Col>
         </Row>
         <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              
-              <p>
-              {employee.department} 
-              </p>
-            </article>
+          <Col size="md-12">
+            <h3>
+              Personal quote: {employee.quote} 
+            </h3>
+            <br />
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-3">
+            <h3>
+              Department: {employee.department} 
+            </h3>
+          </Col>
+          <Col size="md-3">
+            <h3>
+              Email: {employee.email} 
+            </h3>
+          </Col>
+          <Col size="md-3">
+            <h3>
+              Phone Number: {employee.phone} 
+            </h3>
+          </Col>
+          <Col size="md-3">
+            <h3>
+              Birthday: {employee.dob} 
+            </h3>
           </Col>
         </Row>
         <Row>
