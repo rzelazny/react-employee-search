@@ -44,6 +44,20 @@ function Books() {
       <Jumbotron>
         <h1>TechCo Employee Directory</h1>
       </Jumbotron>
+      <Row>
+        <Col size="md-3 sm-3">
+          Employee Name <i class="fa fa-sort-desc" aria-hidden="true"></i>
+        </Col>
+        <Col size="md-3 sm-3">
+          Employee Email Address<i class="fa fa-sort-desc" aria-hidden="true"></i>
+        </Col>
+        <Col size="md-3 sm-3">
+          Employee Phone Number<i class="fa fa-sort-desc" aria-hidden="true"></i>
+        </Col>
+        <Col size="md-3 sm-3">
+          Employee Birthday<i class="fa fa-sort-desc" aria-hidden="true"></i>
+        </Col>
+      </Row>
       {employees.length ? (
         <List>
           {employees.map(employee => (
@@ -56,9 +70,15 @@ function Books() {
                     </strong>
                   </Link>
                 </Col>
-                <Col size="md-3 sm-3">{employee.email}</Col>
-                <Col size="md-3 sm-3">{employee.phone}</Col>
-                <Col size="md-3 sm-3">{employee.dob}</Col>
+                <Col size="md-3 sm-3">
+                  {employee.email}
+                </Col>
+                <Col size="md-3 sm-3">
+                  {employee.phone}
+                </Col>
+                <Col size="md-3 sm-3">
+                  {employee.dob}
+                </Col>
               </Row>
             </ListItem>
           ))}

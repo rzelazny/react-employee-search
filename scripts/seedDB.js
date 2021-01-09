@@ -14,7 +14,14 @@ const employeeSeed = [
     lastName: "Smith",
     email: "RobbyBoy@techco.com",
     phone: "555-123-4567",
-    dob:  "07/20/19080"
+    dob:  "07/20/1980"
+  },
+  {
+    firstName: "Michael",
+    lastName: "Scott",
+    email: "mScott@techco.com",
+    phone: "555-321-5678",
+    dob:  "07/20/1974"
   },
 ];
 

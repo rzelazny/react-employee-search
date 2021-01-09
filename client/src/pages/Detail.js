@@ -42,7 +42,7 @@ function Detail() {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Back to Directory</Link>
           </Col>
         </Row>
       </Container>
