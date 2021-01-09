@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
-function Books() {
+function Employees() {
   const [employees, setEmployees] = useState([])
-  const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
     loadEmployees()
@@ -21,22 +20,13 @@ function Books() {
       .catch(err => console.log(err));
   };
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value })
-  };
-
-  function handleFormSubmit(event) {
-    //   event.preventDefault();
-    //   if (formObject.firstName && formObject.lastName) {
-    //     API.saveBook({
-    //       // title: formObject.title,
-    //       // author: formObject.author,
-    //       // synopsis: formObject.synopsis
-    //     })
-    //       .then(res => loadEmployees())
-    //       .catch(err => console.log(err));
-    //   }
+  function sortEmployees() {
+    console.log("I've been clicked");
+    // API.getEmployees()
+    //   .then(res =>
+    //     setEmployees(res.data)
+    //   )
+    //   .catch(err => console.log(err));
   };
 
   return (
@@ -46,16 +36,16 @@ function Books() {
       </Jumbotron>
       <Row>
         <Col size="md-3 sm-3">
-          Employee Name <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          <p onClick={()=>sortEmployees()} >Employee Name <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Email Address<i class="fa fa-sort-desc" aria-hidden="true"></i>
+          Employee Email Address <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Phone Number<i class="fa fa-sort-desc" aria-hidden="true"></i>
+          Employee Phone Number <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Birthday<i class="fa fa-sort-desc" aria-hidden="true"></i>
+          Employee Birthday <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
         </Col>
       </Row>
       {employees.length ? (
@@ -91,4 +81,4 @@ function Books() {
 }
 
 
-export default Books;
+export default Employees;
