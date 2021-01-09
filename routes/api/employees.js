@@ -9,6 +9,5 @@ router.route("/")
 router
   .route("/:id")
   .get(employeeController.findById)
-  .put(employeeController.update)
 
 module.exports = router;
