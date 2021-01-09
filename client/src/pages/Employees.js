@@ -15,64 +15,60 @@ function Books() {
 
   function loadEmployees() {
     API.getEmployees()
-      .then(res => 
+      .then(res =>
         setEmployees(res.data)
       )
       .catch(err => console.log(err));
   };
 
-  function deleteEmployee(id) {
-    API.deleteEmployees(id)
-      .then(res => loadEmployees())
-      .catch(err => console.log(err));
-  }
-
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
+    setFormObject({ ...formObject, [name]: value })
   };
 
-   function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   if (formObject.firstName && formObject.lastName) {
-  //     API.saveBook({
-  //       // title: formObject.title,
-  //       // author: formObject.author,
-  //       // synopsis: formObject.synopsis
-  //     })
-  //       .then(res => loadEmployees())
-  //       .catch(err => console.log(err));
-  //   }
-   };
+  function handleFormSubmit(event) {
+    //   event.preventDefault();
+    //   if (formObject.firstName && formObject.lastName) {
+    //     API.saveBook({
+    //       // title: formObject.title,
+    //       // author: formObject.author,
+    //       // synopsis: formObject.synopsis
+    //     })
+    //       .then(res => loadEmployees())
+    //       .catch(err => console.log(err));
+    //   }
+  };
 
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12 sm-12">
-            <Jumbotron>
-              <h1>TechCo Employee Directory</h1>
-            </Jumbotron>
-            {employees.length ? (
-              <List>
-                {employees.map(employee => (
-                  <ListItem key={employee._id}>
-                    <Link to={"/employees/" + employee._id}>
-                      <strong>
-                        
-                      </strong>
-                    </Link>
-                    
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+  return (
+    <Container fluid>
+      <Jumbotron>
+        <h1>TechCo Employee Directory</h1>
+      </Jumbotron>
+      {employees.length ? (
+        <List>
+          {employees.map(employee => (
+            <ListItem key={employee._id}>
+              <Row>
+                <Col size="md-3 sm-3">
+                  <Link to={"/employees/" + employee._id}>
+                    <strong>
+                      {employee.firstName} {employee.lastName}
+                    </strong>
+                  </Link>
+                </Col>
+                <Col size="md-3 sm-3">{employee.email}</Col>
+                <Col size="md-3 sm-3">{employee.phone}</Col>
+                <Col size="md-3 sm-3">{employee.dob}</Col>
+              </Row>
+            </ListItem>
+          ))}
+        </List>
+      ) : (
+          <h3>No Results to Display</h3>
+        )}
+    </Container>
+  );
+}
 
 
 export default Books;
