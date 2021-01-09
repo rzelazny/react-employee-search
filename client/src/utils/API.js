@@ -11,6 +11,7 @@ export default {
   },
   // Filters for employees with the given name
   filterEmployees: function (name) {
+    console.log("filter called");
     return axios.get("/api/employees/filter/" + name);
   },
   // Gets the employee with the given id
