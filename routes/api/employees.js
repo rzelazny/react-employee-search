@@ -5,6 +5,9 @@ const employeeController = require("../../controllers/employeeController");
 router.route("/")
   .get(employeeController.findAll)
 
+router.route("/sort/:order")
+  .get(employeeController.sorted)
+
 // Matches with "/api/employees/:id"
 router
   .route("/:id")

@@ -7,6 +7,7 @@ import { List, ListItem } from "../components/List";
 
 function Employees() {
   const [employees, setEmployees] = useState([])
+  let sortOrder = 1;
 
   useEffect(() => {
     loadEmployees()
@@ -20,13 +21,13 @@ function Employees() {
       .catch(err => console.log(err));
   };
 
+  //function sorts employees by lastName. Each click inverts the sort order
   function sortEmployees() {
-    console.log("I've been clicked");
-    // API.getEmployees()
-    //   .then(res =>
-    //     setEmployees(res.data)
-    //   )
-    //   .catch(err => console.log(err));
+    API.sortEmployees(sortOrder)
+      .then(res =>
+        setEmployees(res.data)
+      )
+      .catch(err => console.log(err));
   };
 
   return (
@@ -39,13 +40,13 @@ function Employees() {
           <p onClick={()=>sortEmployees()} >Employee Name <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Email Address <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
+        <p >Employee Email Address <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Phone Number <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
+        <p >Employee Phone Number <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
         </Col>
         <Col size="md-3 sm-3">
-          Employee Birthday <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>
+        <p >Employee Birthday <i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i></p>
         </Col>
       </Row>
       {employees.length ? (
