@@ -9,10 +9,12 @@ function Employees() {
   const [employees, setEmployees] = useState([]);
   const [sort, setSort] = useState(1);
 
+  //get employees on page load
   useEffect(() => {
     loadEmployees()
   }, [])
 
+  //function pulls the existing employees
   function loadEmployees() {
     API.getEmployees()
       .then(res =>
