@@ -6,8 +6,8 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
 function Employees() {
-  const [employees, setEmployees] = useState([])
-  let sortOrder = 1;
+  const [employees, setEmployees] = useState([]);
+  const [sort, setSort] = useState(1);
 
   useEffect(() => {
     loadEmployees()
@@ -23,7 +23,8 @@ function Employees() {
 
   //function sorts employees by lastName. Each click inverts the sort order
   function sortEmployees() {
-    API.sortEmployees(sortOrder)
+    setSort(sort * -1);
+    API.sortEmployees(sort)
       .then(res =>
         setEmployees(res.data)
       )
