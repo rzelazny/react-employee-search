@@ -4,7 +4,7 @@
 ## Description 
 
 Employee search page with a React front end. Sort employees alphabetically in ascending or descending order, or click on employees for more 
-details. Employees generated randomly using faker.js.
+details. Search for particular employees with a last name search. Employees generated randomly using faker.js.
 
 ## Table of Contents
 
@@ -30,7 +30,8 @@ Installation steps:
 
 ![Image of react employee directory](https://github.com/rzelazny/react-employee-search/blob/main/public/assets/images/react-emp-directory-demo.png)
 
-Employee names link to their detail pages. Click on the sort icon by employee name sorts the list in alternately ascending then descending order.
+Employee names link to their detail pages. Click the sort icon by employee name to sort the list in ascending or descending order. 
+The Last Name search returns exact matches for last name. If the search box is blank it will return all employees.
 
 ## License
 
