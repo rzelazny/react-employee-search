@@ -13,8 +13,7 @@ function Employees() {
 
   //get employees on page load
   useEffect(() => {
-    if(employeeSearch === "") loadEmployees()
-    else console.log(employeeSearch)
+    loadEmployees()
   }, [])
 
   //function pulls the existing employees
@@ -50,12 +49,11 @@ function Employees() {
     if(employeeSearch !== ""){
       API.filterEmployees(employeeSearch)
       .then(res => {
-        console.log(res.data)
         setEmployees(res.data)
       })
       .catch(err => console.log(err));
     }
-    else loadEmployees();
+    else loadEmployees(); //if the form is blank get all employees
     
   };
 
@@ -65,19 +63,19 @@ function Employees() {
         <h1>TechCo Employee Directory</h1>
       </Jumbotron>
       <Row>
-        <Col size="md-3 sm-3"> {/* show either the asc or desc arrow depending on which sort is used */}
+        <Col size="md-2 sm-2"> {/* show either the asc or desc arrow depending on which sort is used */}
           <h5 onClick={() => sortEmployees()} >Employee Name {sort === -1 ?
             (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) :
             (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</h5>
         </Col>
         <Col size="md-3 sm-3">
-          <p >Employee Email Address </p>
+          <h5 >Employee Email Address </h5>
         </Col>
         <Col size="md-2 sm-2">
-          <p >Employee Phone Number </p>
+          <h5 >Employee Phone Number </h5>
         </Col>
-        <Col size="md-1 sm-1">
-          <p >Employee Birthday </p>
+        <Col size="md-2 sm-2">
+          <h5 >Employee Birthday </h5>
         </Col>
         <Col size="md-3 sm-3">
           <Input
@@ -85,7 +83,7 @@ function Employees() {
             value={employeeSearch}
             onChange={handleInputChange}
             onSubmit={handleFormSubmit}
-            placeholder="Employee Name" />
+            placeholder="Last Name Search" />
         </Col>
       </Row>
       {employees.length ? (
@@ -93,7 +91,7 @@ function Employees() {
           {employees.map(employee => (
             <ListItem key={employee._id}>
               <Row>
-                <Col size="md-3 sm-3">
+                <Col size="md-2 sm-2">
                   <Link to={"/employees/" + employee._id}>
                     <strong>
                       {employee.firstName} {employee.lastName}
