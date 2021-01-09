@@ -28,7 +28,7 @@ Installation steps:
 
 ## Usage 
 
-![Image of react employee directory](https://github.com/rzelazny/burger-eater/blob/main/public/assets/images/react-emp-directory-demo.png)
+![Image of react employee directory](https://github.com/rzelazny/react-employee-search/blob/main/public/assets/images/react-emp-directory-demo.png)
 
 Employee names link to their detail pages. Click on the sort icon by employee name sorts the list in alternately ascending then descending order.
 
