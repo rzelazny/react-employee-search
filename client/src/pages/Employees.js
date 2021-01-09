@@ -37,7 +37,7 @@ function Employees() {
         <h1>TechCo Employee Directory</h1>
       </Jumbotron>
       <Row>
-        <Col size="md-3 sm-3">
+        <Col size="md-3 sm-3"> {/* show either the asc or desc arrow depending on which sort is used */}
           <p onClick={()=>sortEmployees()} >Employee Name {sort === -1 ? 
           (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) : 
           (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</p>

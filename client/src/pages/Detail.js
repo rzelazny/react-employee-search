@@ -7,12 +7,10 @@ import API from "../utils/API";
 function Detail() {
   const [employee, setEmployee] = useState({})
   
-  // Add code to get the book with an _id equal to the id in the route param
-  // e.g. http://localhost:3000/books/:id
-  // The book id for this route can be accessed using the useParams hook
-  // from react-router-dom.
+  //get the employee ID from the url parameters
   const {id} = useParams();
 
+  //on page load get employee data
   useEffect(() => {
     API.getEmployee(id)
       .then(res => setEmployee(res.data))
@@ -38,7 +36,8 @@ function Detail() {
             <br />
           </Col>
         </Row>
-        <Row>
+        <hr />
+        <Row >
           <Col size="md-3">
             <h3>
               Department: {employee.department} 
@@ -60,11 +59,13 @@ function Detail() {
             </h3>
           </Col>
         </Row>
+        <hr />
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Directory</Link>
           </Col>
         </Row>
+        
       </Container>
     );
   }
