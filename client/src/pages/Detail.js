@@ -56,7 +56,7 @@ function Detail() {
           </Col>
           <Col size="md-3">
             <h3>
-              Birthday: {employee.dob} 
+              Birthday: {new Date(employee.dob).toLocaleDateString()} 
             </h3>
           </Col>
         </Row>

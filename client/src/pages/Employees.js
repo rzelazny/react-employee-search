@@ -71,7 +71,7 @@ function Employees() {
                   {employee.phone}
                 </Col>
                 <Col size="md-3 sm-3">
-                  {employee.dob}
+                  {new Date(employee.dob).toLocaleDateString()}
                 </Col>
               </Row>
             </ListItem>
