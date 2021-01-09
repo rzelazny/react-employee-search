@@ -1,5 +1,4 @@
 import React from "react";
-import background from "./jumbo_background.png";
 import "./style.css";
 
 
