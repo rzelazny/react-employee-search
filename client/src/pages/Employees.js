@@ -4,10 +4,12 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import Input from "../components/Input";
 
 function Employees() {
   const [employees, setEmployees] = useState([]);
   const [sort, setSort] = useState(1);
+  const [empName, setSearch] = useState("");
 
   //get employees on page load
   useEffect(() => {
@@ -33,6 +35,23 @@ function Employees() {
       .catch(err => console.log(err));
   };
 
+  //function handles typing in the search form
+  const handleInputChange = event => {
+    const { value } = event.target;
+    setSearch(value);
+  };
+
+  //function handles submission of the search form
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    API.getRecipes(empName)
+      .then(res => {
+        console.log(res.data)
+        setSearch(res.data)
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <Container fluid>
       <Jumbotron>
@@ -40,18 +59,26 @@ function Employees() {
       </Jumbotron>
       <Row>
         <Col size="md-3 sm-3"> {/* show either the asc or desc arrow depending on which sort is used */}
-          <p onClick={()=>sortEmployees()} >Employee Name {sort === -1 ? 
-          (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) : 
-          (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</p>
+          <p onClick={() => sortEmployees()} >Employee Name {sort === -1 ?
+            (<i className="fa fa-sort-desc fa-lg" aria-hidden="true"></i>) :
+            (<i className="fa fa-sort-asc fa-lg" aria-hidden="true"></i>)}</p>
         </Col>
         <Col size="md-3 sm-3">
-        <p >Employee Email Address </p>
+          <p >Employee Email Address </p>
+        </Col>
+        <Col size="md-2 sm-2">
+          <p >Employee Phone Number </p>
+        </Col>
+        <Col size="md-1 sm-1">
+          <p >Employee Birthday </p>
         </Col>
         <Col size="md-3 sm-3">
-        <p >Employee Phone Number </p>
-        </Col>
-        <Col size="md-3 sm-3">
-        <p >Employee Birthday </p>
+          <Input
+            name="employeeSearch"
+            value={empName}
+            onChange={handleInputChange}
+            onSubmit={handleFormSubmit}
+            placeholder="Employee Name" />
         </Col>
       </Row>
       {employees.length ? (
@@ -69,7 +96,7 @@ function Employees() {
                 <Col size="md-3 sm-3">
                   {employee.email}
                 </Col>
-                <Col size="md-3 sm-3">
+                <Col size="md-2 sm-2">
                   {employee.phone}
                 </Col>
                 <Col size="md-3 sm-3">
