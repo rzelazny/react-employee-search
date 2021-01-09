@@ -9,7 +9,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   sorted: function(req, res) {
-    console.log(req.params.order);
     db.Employee
       .find(req.query)
       .sort({ lastName: req.params.order })

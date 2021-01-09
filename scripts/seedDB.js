@@ -1,29 +1,28 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const faker = require ("faker");
 
-// This file empties the Books collection and inserts the books below
+// This file empties the employee collection and inserts 20 random employees
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/employeesearch"
 );
 
-const employeeSeed = [
-  {
-    firstName: "Bob",
-    lastName: "Smith",
-    email: "RobbyBoy@techco.com",
-    phone: "555-123-4567",
-    dob:  "07/20/1980"
-  },
-  {
-    firstName: "Michael",
-    lastName: "Scott",
-    email: "mScott@techco.com",
-    phone: "555-321-5678",
-    dob:  "07/20/1974"
-  },
-];
+const employeeSeed = [];
+let empNumber = 20;
+
+for(let i=0;i<empNumber; i++){
+  employeeSeed.push({
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email: faker.internet.email(),
+    phone: faker.phone.phoneNumber(),
+    dob:  faker.date.past(),
+    department: faker.commerce.department(),
+    quote: faker.lorem.sentence() 
+  })
+}
 
 db.Employee
   .remove({})

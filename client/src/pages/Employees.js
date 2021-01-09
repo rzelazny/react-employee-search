@@ -14,7 +14,7 @@ function Employees() {
   }, [])
 
   function loadEmployees() {
-    API.createEmployees()
+    API.getEmployees()
       .then(res =>
         setEmployees(res.data)
       )
