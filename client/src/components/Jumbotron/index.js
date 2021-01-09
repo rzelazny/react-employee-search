@@ -1,11 +1,11 @@
 import React from "react";
+import background from "./jumbo_background.png";
+import "./style.css";
+
 
 function Jumbotron({ children }) {
   return (
-    <div
-      style={{ height: 200, clear: "both", paddingTop: 60, textAlign: "center" }}
-      className="jumbotron"
-    >
+    <div className="jumbotron">
       {children}
     </div>
   );
